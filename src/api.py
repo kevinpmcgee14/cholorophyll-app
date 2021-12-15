@@ -1,6 +1,7 @@
 import os
 from src.helpers import clean_data
 import joblib
+from flasgger import swag_from 
 from flask import request
 from flask_restful import Resource, abort
 import pandas as pd
@@ -11,6 +12,7 @@ model = joblib.load(os.getenv('MODEL_WEIGHTS_PATH', 'src/RandomForestPipeline.jo
 
 class HealthCheck(Resource):
 
+    @swag_from('./specs/health.yaml')
     def get(self) -> dict : 
         """Check if API is reachable
 
@@ -25,6 +27,7 @@ api.add_resource(HealthCheck, '/')
 
 class Prediction(Resource):
 
+    @swag_from('./specs/predict.yaml')
     def post(self) -> dict : 
         """Get predicitons from api. Features should be passed in request body 
         in the format {features:[{feature_set_1}, {feature_Set_2}, etc.]}. See

@@ -1,0 +1,130 @@
+Get a prediction from a feature set
+---
+tags:
+  - predict
+parameters:
+  - name: payload
+    in: body
+    type: object
+    properties:
+      features:
+        type: array
+        items:
+          $ref: '#/definitions/FeatureSet'
+definitions:
+  FeatureSet:
+    type: object
+    properties:
+      Wave_700: 
+        type: number
+        example: 0.151650647
+      Wave_701: 
+        type: number
+        example: 0.160338722
+      Wave_702: 
+        type: number
+        example: 0.169097051
+      Wave_703: 
+        type: number
+        example: 0.177838731
+      Wave_704: 
+        type: number
+        example: 0.186526799
+      Wave_705: 
+        type: number
+        example: 0.195124636
+      Wave_706: 
+        type: number
+        example: 0.203600498
+      Wave_707: 
+        type: number
+        example: 0.21195358
+      Wave_708: 
+        type: number
+        example: 0.220220413
+      Wave_709: 
+        type: number
+        example: 0.228410879
+      Wave_710: 
+        type: number
+        example: 0.236536054
+      Wave_711: 
+        type: number
+        example: 0.244645672
+      Wave_712: 
+        type: number
+        example: 0.252700989
+      Wave_713: 
+        type: number
+        example: 0.260692175
+      Wave_714: 
+        type: number
+        example: 0.26870567
+      Wave_715: 
+        type: number
+        example: 0.276667328
+      Wave_716: 
+        type: number
+        example: 0.284572467
+      Wave_717: 
+        type: number
+        example: 0.292425225
+      Wave_718: 
+        type: number
+        example: 0.300131356
+      Wave_719: 
+        type: number
+        example: 0.307748879
+      Wave_720: 
+        type: number
+        example: 0.315282539
+      Wave_721: 
+        type: number
+        example: 0.322690143
+      Wave_722: 
+        type: number
+        example: 0.329912849
+      Wave_723: 
+        type: number
+        example: 0.336897501
+      Wave_724: 
+        type: number
+        example: 0.343644727
+      Wave_725: 
+        type: number
+        example: 0.350273675
+      Site:
+        type: string
+        example: "Greenhouse"
+      Growing Season:
+        type: integer
+        example: 2014
+      Genotype:
+        type: string
+        example: "B73"
+      Treatment:
+        type: string
+        example: "Low N"
+
+  Prediction:
+    type: number
+    example: 14.873200000000008
+
+responses:
+  200:
+    description: predictions returned
+    schema:
+      type: object
+      properties:
+        predictions:
+          type: array
+          items:
+            $ref: '#/definitions/Prediction'
+  404:
+    description: Bad Request
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Bad Request
