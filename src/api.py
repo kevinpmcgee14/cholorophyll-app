@@ -1,13 +1,13 @@
 import os
-from app.helpers import clean_data
+from src.helpers import clean_data
 import joblib
 from flask import request
 from flask_restful import Resource, abort
 import pandas as pd
 
-from app import  api
+from src import  api, app
 
-model = joblib.load(os.getenv('MODEL_WEIGHTS_PATH', './RandomForestPipeline.joblib'))
+model = joblib.load(os.getenv('MODEL_WEIGHTS_PATH', 'src/RandomForestPipeline.joblib'))
 
 class HealthCheck(Resource):
 
@@ -70,3 +70,6 @@ class Prediction(Resource):
         return {'predictions': response_data}
 
 api.add_resource(Prediction, '/predict/')
+
+if __name__ == "__main__":
+    app.run(debug=True)
