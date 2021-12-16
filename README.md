@@ -31,10 +31,9 @@ requests.post(
 You can run this application locally using `docker compose` via the following command.
 
 ```bash
-docker compose build
-docker compose up
+docker-compose up --build
 ```
-This will build a container and expose the application at https://localhost:5000
+This will build a container and expose the application at http://localhost:5000
 ### API Documentation
 
 Swagger API specification can be found here:  https://chlorophyll-api.herokuapp.com/apidocs/
